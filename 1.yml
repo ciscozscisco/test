@@ -1,0 +1,14 @@
+---
+- name: MY FIRST PLAYBOOK
+  hosts: cisco
+  gather_facts: false
+  connection: network_cli
+
+  tasks: 
+   - name: "VLAN CONFIG"
+     cisco.ios.ios_config:
+       lines:
+         - vlan 224
+     register: my_output
+     
+   - debug: var=my_output   
